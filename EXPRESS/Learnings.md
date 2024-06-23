@@ -1,0 +1,8 @@
+## Learning Include...
+Benefits Of Express...
+Middlewares & Their Benefits
+Postman Usage With Make PORT Public
+Make Code Manageable With Design Partan Like `MVC` => Export Files & Functions 
+MVC_(Model(Consider As DB) , View(Refers To HTMl), Controllers(Includes Operations/Functions Performed On DB According to API))
+Router => (Consider as itself complete app with It's Own Routs i.e all Routs Starts With '/friends')
+Path Api & Image Sharing

@@ -1,21 +1,26 @@
 const express = require("express");
-const homePageController = require("./controllers/Home.controller");
-const friendController = require("./controllers/Friends.controller");
+
+const homeRouter = require("./routers/Home.router");
+const friendRouter = require("./routers/Friends.router")
+const randomRouter = require("./routers/Random.router");
+
 const app = express();
 const port = 3000;
 
+// A Middleware use to track API completion durations
 app.use((req, res, next) => {
   const dateStart = Date.now();
   next();
-  console.log(`Time Took By API : ${Date.now() - dateStart} ms`);
+  console.log(`${req.method}${req.baseUrl}${req.url}`);
+  console.log(`API Took : ${Date.now() - dateStart} ms`);
 });
+
+// A Default Middleware From EXPRESS use to Convert Buffers To Json Formate
 app.use(express.json());
 
-app.get("/", homePageController);
-
-app.get("/friends", friendController?.allFriends);
-app.get("/friends/:friendById", friendController?.friendById);
-app.post("/friends", friendController?.addFriend);
+app.use("/", homeRouter)
+app.use("/friends", friendRouter)
+app.use("/random", randomRouter)
 
 app.listen(port, () => {
   console.log(`Listening On Port ${port}.....`);

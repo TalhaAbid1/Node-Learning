@@ -1,9 +1,6 @@
 const friends = require("../models/Friends.model");
 
 function allFriends(req, res) {
-  console.log('====================================');
-  console.log(friends);
-  console.log('====================================');
   res.send(friends);
 }
 function friendById(req, res) {
