@@ -19,8 +19,8 @@ function addFriend(req, res) {
     });
   }
   const newFriend = {
-    name: req?.body?.name,
     id: friends.length,
+    name: req?.body?.name,
   };
   friends.push(newFriend);
   res.status(200).send(`${req?.body?.name} Added Successfully`);

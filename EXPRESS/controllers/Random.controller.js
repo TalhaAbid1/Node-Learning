@@ -11,12 +11,15 @@ function shareImage(req, res) {
   );
   // res.send({ name: "IMAGE" });
 }
-function shareHtml(req, res) {
-  res.send("<h3>ABID</h3>");
+function templateEngine(req, res) {
+  res.render("random", {
+    title:'Using Template engine in Controllers',
+    friend: "ABID",
+  });
 }
 
 module.exports = {
   sendJson,
   shareImage,
-  shareHtml,
+  templateEngine,
 };
