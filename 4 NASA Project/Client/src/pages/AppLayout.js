@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 import Launch from "./Launch";
 import History from "./History";
 import Upcoming from "./Upcoming";
+import PageNotFound from "./PageNotFound";
 
 const styles = () => ({
   content: {
@@ -90,8 +91,7 @@ const AppLayout = (props) => {
                   <History entered={anim.entered} launches={launches} />
                 </Route>
                 <Route exact path="/*">
-                  {/* CREATE 404 Route HERE */}
-                  {/* <History entered={anim.entered} launches={launches} />  */}
+                  <PageNotFound entered={anim.entered} /> 
                 </Route>
               </Switch>
             </div>
