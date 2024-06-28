@@ -1,2 +1,6 @@
 # NODE
 node_modules/
+
+# production
+/build
+/public
