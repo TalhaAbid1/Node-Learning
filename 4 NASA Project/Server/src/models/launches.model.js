@@ -1,5 +1,7 @@
 const launches = new Map();
 
+let latestFlightNumber = 10;
+
 const launch = {
   flightNumber: 10,
   mission: "kepler X",
@@ -14,10 +16,26 @@ const launch = {
 
 launches.set(launch.flightNumber, launch);
 
+// Get All Available Launch
 function getAllLaunches() {
   return Array.from(launches.values());
 }
 
+// Handel Post New launch
+function postNewLaunch(launchDetails) {
+  latestFlightNumber++;
+  launches.set(
+    latestFlightNumber,
+    Object.assign(launchDetails, {
+      flightNumber: latestFlightNumber,
+      customers: ["NASA", "Alphas"],
+      upcoming: true,
+      success: true,
+    })
+  );
+}
+
 module.exports = {
   getAllLaunches,
+  postNewLaunch,
 };

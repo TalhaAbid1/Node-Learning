@@ -23,8 +23,8 @@ app.use(express.json());
 // setting route of App
 app.use(express.static(path.join(__dirname, "..", "public")));
 
-app.use(launchesRouter);
-app.use(planetsRouter);
+app.use('/planets',planetsRouter);
+app.use('/launches',launchesRouter);
 
 // This Should Be at End of all Routers & Middleware (it help to handle routes from React & Falsy Routes )
 app.get("/*", (req, res) => {
