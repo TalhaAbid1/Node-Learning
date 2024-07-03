@@ -1,6 +1,8 @@
 const {
   getAllLaunches,
   postNewLaunch,
+  existsLaunchWithId,
+  abortLaunchById,
 } = require("../../models/launches.model");
 
 function httpGetAllLaunches(req, res) {
@@ -34,7 +36,24 @@ function httpPostNewLaunch(req, res) {
   return res.status(201).json(launchBody);
 }
 
+function httpAbortLaunch(req, res) {
+  const launchId = Number(req.params.id);
+
+  if (!existsLaunchWithId(launchId)) {
+    return res.status(404).json({
+      message: "Launch id not found",
+    });
+  }
+
+  const abortLaunchData = abortLaunchById(launchId);
+  return res.status(200).json({
+    message: "Launch abort successful",
+    ...abortLaunchData,
+  });
+}
+
 module.exports = {
   httpGetAllLaunches,
   httpPostNewLaunch,
+  httpAbortLaunch,
 };

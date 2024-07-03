@@ -23,6 +23,7 @@ async function httpSubmitLaunch(launch) {
       body: JSON.stringify(launch),
     });
   } catch (error) {
+    console.log("httpSubmitLaunch Error :", error);
     return {
       ok: false,
     };
@@ -30,8 +31,16 @@ async function httpSubmitLaunch(launch) {
 }
 
 async function httpAbortLaunch(id) {
-  // TODO: Once API is ready.
-  // Delete launch with given ID.
+  try {
+    return await fetch(`${baseUrl}/launches/${id}`, {
+      method: "delete",
+    });
+  } catch (error) {
+    console.log("httpAbortLaunch Error :", error);
+    return {
+      ok: false,
+    };
+  }
 }
 
 export { httpGetPlanets, httpGetLaunches, httpSubmitLaunch, httpAbortLaunch };

@@ -34,7 +34,22 @@ function postNewLaunch(launchDetails) {
   );
 }
 
+// Find launches By Id
+function existsLaunchWithId(launchId) {
+  return launches.has(launchId);
+}
+
+// Handel launch abort
+function abortLaunchById(launchId) {
+  const launchById = launches.get(launchId);
+  launchById.upcoming = false;
+  launchById.success = false;
+  return launchById;
+}
+
 module.exports = {
   getAllLaunches,
   postNewLaunch,
+  existsLaunchWithId,
+  abortLaunchById,
 };
