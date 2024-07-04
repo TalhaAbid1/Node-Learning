@@ -15,6 +15,10 @@ const styles = () => ({
     color: "red",
     textDecoration: "none",
   },
+  linkSuccess: {
+    color: "green",
+    textDecoration: "none",
+  },
 });
 
 const Upcoming = props => {
@@ -23,6 +27,7 @@ const Upcoming = props => {
     launches,
     classes,
     abortLaunch,
+    successLaunch,
   } = props;
 
   const tableBody = useMemo(() => {
@@ -35,6 +40,11 @@ const Upcoming = props => {
                 ✖
               </Link>
             </Clickable>
+            <Clickable style={{color:"green"}}>
+              <Link className={classes.linkSuccess} onClick={() => successLaunch(launch.flightNumber)}>
+                ✔
+              </Link>
+            </Clickable>
           </td>
           <td>{launch.flightNumber}</td>
           <td>{new Date(launch.launchDate).toDateString()}</td>
@@ -43,7 +53,7 @@ const Upcoming = props => {
           <td>{launch.target}</td>
         </tr>;
       });
-  }, [launches, abortLaunch, classes.link]);
+  }, [launches, abortLaunch, successLaunch, classes.link, classes.linkSuccess]);
 
   return <Appear id="upcoming" animate show={entered}>
     <Paragraph>Upcoming missions including both SpaceX launches and newly scheduled Zero to Mastery rockets.</Paragraph>
