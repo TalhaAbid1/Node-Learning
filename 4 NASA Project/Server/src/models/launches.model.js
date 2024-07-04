@@ -47,9 +47,18 @@ function abortLaunchById(launchId) {
   return launchById;
 }
 
+// Handel launch success
+function successLaunchById(launchId) {
+  const launchById = launches.get(launchId);
+  launchById.upcoming = false;
+  launchById.success = true;
+  return launchById;
+}
+
 module.exports = {
   getAllLaunches,
   postNewLaunch,
   existsLaunchWithId,
   abortLaunchById,
+  successLaunchById
 };

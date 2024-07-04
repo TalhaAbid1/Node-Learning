@@ -43,4 +43,17 @@ async function httpAbortLaunch(id) {
   }
 }
 
-export { httpGetPlanets, httpGetLaunches, httpSubmitLaunch, httpAbortLaunch };
+async function httpSuccessLaunch(id) {
+  try {
+    return await fetch(`${baseUrl}/launches/success/${id}`, {
+      method: "delete",
+    });
+  } catch (error) {
+    console.log("httpSuccessLaunch Error :", error);
+    return {
+      ok: false,
+    };
+  }
+}
+
+export { httpGetPlanets, httpGetLaunches, httpSubmitLaunch, httpAbortLaunch, httpSuccessLaunch };

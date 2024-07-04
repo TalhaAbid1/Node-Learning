@@ -43,7 +43,7 @@ const AppLayout = (props) => {
   const onAbortSound = () => sounds.abort && sounds.abort.play();
   const onFailureSound = () => sounds.warning && sounds.warning.play();
 
-  const { launches, isPendingLaunch, submitLaunch, abortLaunch } = useLaunches(
+  const { launches, isPendingLaunch, submitLaunch, abortLaunch, successLaunch } = useLaunches(
     onSuccessSound,
     onAbortSound,
     onFailureSound
@@ -85,6 +85,7 @@ const AppLayout = (props) => {
                     entered={anim.entered}
                     launches={launches}
                     abortLaunch={abortLaunch}
+                    successLaunch={successLaunch}
                   />
                 </Route>
                 <Route exact path="/history">
