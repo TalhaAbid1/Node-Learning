@@ -18,13 +18,14 @@ app.use(
 // LOGGER MIDDLEWARE (Automatically Log Details On Each Request)
 app.use(morgan("short"));
 
+// Default Middleware use to Convert Response String to Json
 app.use(express.json());
 
 // setting route of App
 app.use(express.static(path.join(__dirname, "..", "public")));
 
-app.use('/planets',planetsRouter);
-app.use('/launches',launchesRouter);
+app.use("/planets", planetsRouter);
+app.use("/launches", launchesRouter);
 
 // This Should Be at End of all Routers & Middleware (it help to handle routes from React & Falsy Routes )
 app.get("/*", (req, res) => {
