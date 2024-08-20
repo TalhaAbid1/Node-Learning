@@ -10,6 +10,7 @@
     "server": "npm run watch --prefix Server",
     "watch": "npm run server & npm run client",
     "deploy": "npm run build --prefix Client && npm start --prefix Server",
+    "deploy-cluster": "npm run build --prefix Client && npm run cluster --prefix Server",
     "test": "npm test --prefix Client && npm test --prefix Server"
   },
   "keywords": [],
@@ -17,6 +18,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "pm2": "^5.4.2"
   }
 }
